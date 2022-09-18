@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nodejs Assesment</title>
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+
+
+<style type="text/css">
+  .padding{
+
+     padding: 5rem !important;
+}
+
+
+
+ .form-control:focus {
+    box-shadow: 10px 0px 0px 0px #ffffff !important;
+    border-color: #4ca746;
+}
+</style>
+</head>
+<body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/3.0.0/jquery.payment.min.js"></script>
+
+ <div class="padding">
+        <div class="row">
+            <div class="container-fluid d-flex justify-content-center">
+                <div class="col-sm-8 col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span>CREDIT/DEBIT CARD PAYMENT</span>
+                                
+                            </div>
+
+                            <div class="col-md-6 text-right" style="margin-top: -5px;">
+
+                                  <img src="https://img.icons8.com/color/36/000000/visa.png">
+                                  <img src="https://img.icons8.com/color/36/000000/mastercard.png">
+                                  <img src="https://img.icons8.com/color/36/000000/amex.png">
+                                           
+                            </div>      
+
+                        </div>    
+  
+                        </div>
+                         <div class="card-body" style="height: 350px">
+
+                    <form action="/backend" method="POST">
+                            <div class="form-group">
+                            <label for="cc-number" class="control-label">CARD NUMBER</label>
+                            <input id="cc-number" type="number" maxlength="16" class="input-lg form-control cc-number" autocomplete="cc-number" name="cardnumber" placeholder="&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull;" required>
+                          </div>
+
+                          <div class="row">
+
+                            <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label for="cc-exp" class="control-label">CARD EXPIRY</label>
+                                    <input id="cc-exp" type="number" name="expiry" maxlength="4" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="&bull;&bull; / &bull;&bull;" required>
+                                  </div>
+
+                                
+                            </div>
+
+                             <div class="col-md-6">
+                               <div class="form-group">
+                                <label for="cc-cvc" class="control-label">CARD CVC</label>
+                                <input id="cc-cvc" type="number" name="cvv" maxlength="3" class="input-lg form-control cc-cvc"  placeholder="&bull;&bull;&bull;&bull;" required>
+                              </div>
+                            </div>
+                              
+                          </div>
+
+      
+                          <div class="form-group">
+                            <label for="numeric" class="control-label">CARD HOLDER NAME</label>
+                            <input id="name" type="text" name="name" class="input-lg form-control">
+                          </div>
+
+                           <div class="form-group">
+                            
+                            <input  value="MAKE PAYMENT" type="submit" class="btn btn-success btn-lg form-control" style="font-size: .8rem;">
+                          </div>
+                          </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+
+       $(document).ready(function(){
+
+
+      $('form').submit(function(e) {
+        e.preventDefault();
+        var mytext = $("#cc-number").val();     
+        var mytext = $("#cc-exp").val();
+        var mytext = $("#cc-cvc").val();
+        var mytext = $("#name").val();
+        $.ajax({
+          url : "/backend",
+          data : {
+            text : mytext
+          },
+          method: "POST",
+          contentType: "application/x-wwww-forum-urlencoded",
+          success: function(res){
+            alert("Succesfully paid")
+          }, error: function(err){
+            console.log(err);
+          }
+        })   
+      });
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
